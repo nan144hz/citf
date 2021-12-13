@@ -1,6 +1,9 @@
 from colorama import Fore, init
 import os, sys
 
+# SETTINGS
+# Change here the settings of citf compiler
+
 SETTINGS={
     'keywords': [],
     'slash': [],
