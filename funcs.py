@@ -13,5 +13,9 @@ def version():
 def compile():
     pass
 
-def read():
-    pass
+def read(file):
+    with open(file, 'r') as f:
+        content = f.read()
+        f.close()
+        return print("""Content of the file """+Fore.LIGHTGREEN_EX+"""{}\n""".format(file)+Fore.WHITE+"\n"+
+"""{}""".format(content))
