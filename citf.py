@@ -16,7 +16,15 @@ class Error:
 def cmd(cmd):
     if cmd=="--help" or cmd=="-h": return funcs.help()
     elif cmd=="--version" or cmd=="-v": return funcs.version()
-    elif cmd=="--compile" or cmd=="-c": return funcs.compile()
+    elif cmd=="--compile" or cmd=="-c":
+        if not len(sys.argv) > 2:
+            return Error("The 'compile' command requires a filename as argument")
+        elif not os.path.isfile(sys.argv[2]):
+            return Error("The file doesn't exist! ('{}')".format(sys.argv[2]))
+        elif not os.path.splitext(sys.argv[2])[1] == ".citf":
+            return Error("The extension of the file must be '.citf'")
+        else:
+            return funcs.compile(sys.argv[2])
     elif cmd=="--read" or cmd=="-r":
         if not len(sys.argv) > 2:
             return Error("The 'read' command requires a filename as argument")
